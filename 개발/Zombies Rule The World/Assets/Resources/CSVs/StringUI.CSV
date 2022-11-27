@@ -1,0 +1,30 @@
+﻿StringUI,String
+Game_Title,Zombies Rule the World
+Game_Start,새 게임
+Game_Resume,이어 하기
+Setting,설정
+Cure_Percentage,{0}%
+Zombie_Percentage_World,{0}%
+Gene_Num,{0}
+Days,Days
+Days_Num,{0}
+Country_Name,국가 이름
+Country_State,국가 상태
+News,News
+News_Title,뉴스 제목
+News_Text,뉴스 텍스트
+Country_info_Text,국가정보 설명
+Symptom,증상
+Symptom_Title,증상 제목
+Symptom_Text,증상 설명
+Contagious,전염성
+Contagious_Title,전염성 항목 제목
+Contagious_Text,전염성 항목 설명
+Transition,변이
+Transition_Title,변이 제목
+Transition_Text,변이 설명
+Item_Title,항목 제목
+Item_Text,항목 설명
+Confirm_Text,{00}+유전자를 사용하여 위 항목을 구매하시겠습니까?
+Cancel_Button,취소
+Purchase_Button,구매
