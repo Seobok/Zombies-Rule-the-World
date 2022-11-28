@@ -7,6 +7,7 @@ public class MoveScene : MonoBehaviour
 {
     public void MoveGameScene()     //게임씬으로 이동
     {
+        GameManager.Instance.Play();
         SceneManager.LoadScene("InGame");
     }
 

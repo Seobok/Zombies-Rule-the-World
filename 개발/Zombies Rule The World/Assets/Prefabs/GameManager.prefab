@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5310070659940257731}
   - component: {fileID: 5310070659940257732}
-  - component: {fileID: 5310070659940257730}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,23 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eaa718773975e94eaabbcfde9968e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  days: 0
   gene: 0
---- !u!114 &5310070659940257730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5310070659940257734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf505c1c1905fda4e9bc29cccedb3599, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  poolPrefabs:
-  - {fileID: 3453345629510957478, guid: 5f379f7b7c5cdad4595737b5308c72bf, type: 3}
-  - {fileID: 7888209866480694775, guid: aa6a89639475a2c43a0e1d05ceeb5e8a, type: 3}
-  - {fileID: 7902585572683859247, guid: b487b662bdd2cc443bef02100cc243a7, type: 3}
-  - {fileID: 4043504249281741010, guid: 6a24eb99d8072614ba9ba065f3595219, type: 3}
-  poolingCount: 1
+  topInfection: 0
+  totalPeopleCount: 0
+  isCountryLoaded: 0

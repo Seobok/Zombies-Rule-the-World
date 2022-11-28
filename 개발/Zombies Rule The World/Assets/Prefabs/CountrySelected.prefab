@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
-  m_FillAmount: 0.371
+  m_FillAmount: 0.541
   m_FillClockwise: 1
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
@@ -1153,10 +1153,10 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4043504249281741023
 CanvasRenderer:
@@ -1208,6 +1208,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcd5d33458853d9428142c9acf93bad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countryName: {fileID: 4043504248348791028}
+  zombieGraph: {fileID: 4043504248821288795}
+  countryState: {fileID: 4043504249369244669}
+  quarantineXIcon: {fileID: 4043504249282213454}
+  airportXIcon: {fileID: 4043504248595682084}
+  harborXIcon: {fileID: 4043504248303209190}
 --- !u!1 &4043504249282213454
 GameObject:
   m_ObjectHideFlags: 0

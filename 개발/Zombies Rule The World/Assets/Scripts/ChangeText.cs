@@ -15,8 +15,11 @@ public class ChangeText : MonoBehaviour
         
         foreach (var txt in texts)
         {
-            txt.text = list[idList[txt.transform.name.Trim()]]["String"].ToString();
-            Debug.Log(txt.transform.name.Trim());
+            var key = txt.transform.name.Trim();
+            if(idList.ContainsKey(key))
+            {
+                txt.text = list[idList[key]]["String"].ToString();
+            }
         }
     }
 }
