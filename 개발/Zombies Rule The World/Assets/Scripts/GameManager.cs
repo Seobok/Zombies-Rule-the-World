@@ -26,14 +26,13 @@ public class GameManager : MonoBehaviour
         InitCountry();
     }
     
-    private const float ContagiousProbability = 10f;
-    private const float CureDevelopProbability = 10f;
+    private const float DefaultContagiousProbability = 10f;
+    private const float DefaultCureDevelopProbability = 10f;
     
     public const int Contagious = 0;
-    public const int CureDevelop = 1;
+    public const int CureDevelopAmount = 1;
     public const int PeopleCount = 2;
     public const int InfectionCount = 3;
-    public const int CureDevelopRate = 4;
 
     private int _days = 0;
     public int days
@@ -48,8 +47,8 @@ public class GameManager : MonoBehaviour
             _days = value;
         }
     }
+    
     private int _gene = 0;
-
     public int gene
     {
         get
@@ -63,10 +62,9 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    [HideInInspector] public float topInfection = 0;
+    [HideInInspector] public string topInfectionCountry = "";
     [HideInInspector] public int totalPeopleCount = 0;
     private int _totalInfectionCount = 0;
-
     public int totalInfectionCount
     {
         get
@@ -79,7 +77,8 @@ public class GameManager : MonoBehaviour
             _totalInfectionCount = value;
         }
     }
-    
+
+    [HideInInspector] public float cureDevelopRate = 0f;
     [HideInInspector] public bool isCountryLoaded = false;
     
     private Action _changeDaysCallBack;
@@ -110,17 +109,16 @@ public class GameManager : MonoBehaviour
         if(!isCountryLoaded)
         {
             Country = new Dictionary<string, List<float>>();
-        
-            var csvList = CSVReader.Read("CSVs/CountryInfo");
 
-            foreach (var country in csvList)
+            var countryInfoList = CSVReader.Read("CSVs/CountryInfo");
+
+            foreach (var country in countryInfoList)
             {
                 var tmp = new List<float>();
-                tmp.Add((ContagiousProbability + int.Parse(country["전염성"].ToString())) / 100);             //Contagious
-                tmp.Add((CureDevelopProbability + int.Parse(country["치료제 개발 수치"].ToString())) / 100);    //CureDevelop
-                tmp.Add(100);                                                                         //PeopleCount
-                tmp.Add(0);                                                                           //InfectionCount
-                tmp.Add(0);                                                                           //CureDevelopRate
+                tmp.Add((DefaultContagiousProbability + int.Parse(country["전염성"].ToString())) / 100);             //Contagious
+                tmp.Add((DefaultCureDevelopProbability + int.Parse(country["치료제 개발 수치"].ToString())) / 100);    //CureDevelop
+                tmp.Add(float.Parse(country["대륙인구"].ToString()));                                                 //PeopleCount
+                tmp.Add(0);                                                                                         //InfectionCount
 
                 totalPeopleCount += (int)tmp[2];
                 totalInfectionCount += (int)tmp[3];
@@ -143,42 +141,39 @@ public class GameManager : MonoBehaviour
 
         foreach (var value in Country)
         {
-            if (value.Value[InfectionCount] / value.Value[PeopleCount] < 1)
+            if (value.Value[InfectionCount] / value.Value[PeopleCount] < 1)     //감염률 < 100%
             {
-                if (value.Value[InfectionCount] == 0)
+                if (value.Value[InfectionCount] == 0)                           //감염자가 0
                 {
-                    if (topInfection >= 0.1)
+                    if (Country[topInfectionCountry][InfectionCount]/Country[topInfectionCountry][PeopleCount] >= 0.1)    //가장 감염자 수가 많은 대륙의 감염률이 10%이상
                     {
-                        if (Random.Range(0f, 1f) <= 0.1f)
+                        if (Random.Range(0f, 1f) <= 0.1f)                       //10%
                         {
-                            value.Value[InfectionCount]++;
+                            value.Value[InfectionCount]++;                      //감염자 발생
                         }
                     }
                 }
                 else
-                {
-                    if (value.Value[Contagious] >= Random.Range(0f, 1f))
+                {                                                               //감염자가 존재
+                    if (value.Value[Contagious] >= Random.Range(0f, 1f))        //전염성 %
                     {
-                        value.Value[InfectionCount] += 1;   //얼마나 증가하는지 모름
+                        value.Value[InfectionCount] += 1;                       //감염자 발생
                     }
                 }
             }
-
-            if (totalInfectionCount / totalPeopleCount <= 0.1 && value.Value[InfectionCount]/value.Value[PeopleCount] <= 0.1)
-            {
-                if (value.Value[CureDevelop] >= Random.Range(0f, 1f))
-                {
-                    value.Value[CureDevelopRate] += 0.01f;
-                }
-
-                if (days % 2 == 0 && value.Value[CureDevelopRate] >= Random.Range(0f, 1f))
-                {
-                    value.Value[Contagious] -= 0.01f;
-                }
+        }
+        
+        if ((float)totalInfectionCount / totalPeopleCount <= 0.1)
+        {       //전체감염률 > 10%
+            if (Country[topInfectionCountry][CureDevelopAmount] >= Random.Range(0f, 1f))
+            {       //최대 감염률 나라의 치료제개발수치 %
+                cureDevelopRate += 0.01f;
             }
+            
+            if(days%2==0 && )
         }
 
-        if (totalInfectionCount / totalPeopleCount >= 1 || totalInfectionCount / totalPeopleCount <= 0)
+        if ((float)totalInfectionCount / totalPeopleCount >= 1 || (float)totalInfectionCount / totalPeopleCount <= 0)
         {
             //게임종료
         }

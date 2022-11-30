@@ -9,4 +9,9 @@ public class ManagePanel : MonoBehaviour
     {
         zombieGen.SetActive(true);
     }
+
+    public void CloseZombieGen()
+    {
+        zombieGen.SetActive(false);
+    }
 }

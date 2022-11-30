@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: afbedbb5e5d559f4cbc78a36a08bbc27
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Hallym Gothic
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 609701c04d8ab07448f05300d34fa4a4, type: 3}
+  - {fileID: 12800000, guid: debe4e3106c1f654598e2b9f13b1c64c, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
