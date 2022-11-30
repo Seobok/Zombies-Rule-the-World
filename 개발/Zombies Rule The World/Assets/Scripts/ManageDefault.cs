@@ -20,6 +20,9 @@ public class ManageDefault : MonoBehaviour
     public GameObject geneNum;
     private TextMeshProUGUI _geneNumText;
     
+    private List<Dictionary<string, object>> _list;
+    private Dictionary<string, int> _idList;
+    
     private void Awake()
     {
         _daysNumText = daysNum.GetComponent<TextMeshProUGUI>();
@@ -29,39 +32,36 @@ public class ManageDefault : MonoBehaviour
         _curePercentageText = curePercentage.GetComponent<TextMeshProUGUI>();
         _geneNumText = geneNum.GetComponent<TextMeshProUGUI>();
         
+        _list = CSVReader.Read("CSVs/StringUI");
+        _idList = CSVReader.ReadID("CSVs/StringUI");
+        
         ChangeDaysText();
         GameManager.Instance.AddChangeDaysCallBack(ChangeDaysText);
         
         ChangeZombieGraph();
         GameManager.Instance.AddChangeTotalInfectionCallBack(ChangeZombieGraph);
+        
+        ChangeGeneText();
+        GameManager.Instance.AddChangeGeneCallBack(ChangeGeneText);
     }
 
     private void ChangeDaysText()
     {
-        List<Dictionary<string, object>> list = CSVReader.Read("CSVs/StringUI");
-        Dictionary<string, int> idList = CSVReader.ReadID("CSVs/StringUI");
-
         _daysNumText.text =
-            String.Format(list[idList["Days_Num"]]["String"].ToString(), GameManager.Instance.days);
+            String.Format(_list[_idList["Days_Num"]]["String"].ToString(), GameManager.Instance.days);
     }
 
     private void ChangeZombieGraph()
     {
-        List<Dictionary<string, object>> list = CSVReader.Read("CSVs/StringUI");
-        Dictionary<string, int> idList = CSVReader.ReadID("CSVs/StringUI");
-
         var zombiePercentageValue = GameManager.Instance.totalInfectionCount / GameManager.Instance.totalPeopleCount;
 
         _zombiePercentageText.text =
-            String.Format(list[idList["Zombie_Percentage_World"]]["String"].ToString(), zombiePercentageValue * 100);
+            String.Format(_list[_idList["Zombie_Percentage_World"]]["String"].ToString(), zombiePercentageValue * 100);
         _zombieGraphBarImage.fillAmount = zombiePercentageValue;
     }
 
     private void ChangeCureGraph()
     {
-        List<Dictionary<string, object>> list = CSVReader.Read("CSVs/StringUI");
-        Dictionary<string, int> idList = CSVReader.ReadID("CSVs/StringUI");
-
         /*var curePercentage
 
         _curePercentageText.text =
@@ -71,11 +71,8 @@ public class ManageDefault : MonoBehaviour
 
     private void ChangeGeneText()
     {
-        List<Dictionary<string, object>> list = CSVReader.Read("CSVs/StringUI");
-        Dictionary<string, int> idList = CSVReader.ReadID("CSVs/StringUI");
-
         _geneNumText.text =
-            String.Format(list[idList["Gene_Num"]]["String"].ToString(), GameManager.Instance.gene);
+            String.Format(_list[_idList["Gene_Num"]]["String"].ToString(), GameManager.Instance.gene);
     }
     
     public void ShowCountrySelect(string country)

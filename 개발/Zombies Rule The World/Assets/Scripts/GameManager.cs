@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         
-        DontDestroyOnLoad(Instance);
+        DontDestroyOnLoad(Instance.gameObject);
         
         InitCountry();
     }
@@ -48,7 +48,20 @@ public class GameManager : MonoBehaviour
             _days = value;
         }
     }
-    [HideInInspector] public int gene = 0;
+    private int _gene = 0;
+
+    public int gene
+    {
+        get
+        {
+            return _gene;
+        }
+        set
+        {
+            _changeGeneCallBack?.Invoke();
+            _gene = value;
+        }
+    }
     
     [HideInInspector] public float topInfection = 0;
     [HideInInspector] public int totalPeopleCount = 0;
@@ -62,27 +75,32 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            _changeTotalInfectionCallBack?.Invoke();
+            _changeTotalInfectionAction?.Invoke();
             _totalInfectionCount = value;
         }
     }
     
     [HideInInspector] public bool isCountryLoaded = false;
+    
+    private Action _changeDaysCallBack;
 
-    public delegate void CallBack();
-
-    private CallBack _changeDaysCallBack;
-
-    public void AddChangeDaysCallBack(CallBack changeDaysCallBack)
+    public void AddChangeDaysCallBack(Action changeDaysAction)
     {
-        _changeDaysCallBack += changeDaysCallBack;
+        _changeDaysCallBack += changeDaysAction;
     }
 
-    private CallBack _changeTotalInfectionCallBack;
+    private Action _changeTotalInfectionAction;
 
-    public void AddChangeTotalInfectionCallBack(CallBack changeTotalInfectionCallBack)
+    public void AddChangeTotalInfectionCallBack(Action changeTotalInfectionAction)
     {
-        _changeTotalInfectionCallBack += changeTotalInfectionCallBack;
+        _changeTotalInfectionAction += changeTotalInfectionAction;
+    }
+
+    private Action _changeGeneCallBack;
+
+    public void AddChangeGeneCallBack(Action changeGeneCallBack)
+    {
+        _changeGeneCallBack += changeGeneCallBack;
     }
     
     public Dictionary<string, List<float>> Country;   //("대륙이름", ("전염성", "치료제 개발 수치", "대륙인구", "감염자 수", "치료제 개발률"))
