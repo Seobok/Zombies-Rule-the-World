@@ -1,9 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ManageSelected : MonoBehaviour
 {
+    public TextMeshProUGUI itemTitle;
+    public TextMeshProUGUI itemText;
+    public TextMeshProUGUI confirmText;
+    
+    [HideInInspector] public float contagious;
+    [HideInInspector] public float cureDevelopProbability;
+    [HideInInspector] public int price;
+
+    [HideInInspector] public GameObject card;
+    
     public void Cancel()
     {
         ObjectPools.Instance.ReleaseObjectToPool(gameObject);
@@ -11,6 +23,20 @@ public class ManageSelected : MonoBehaviour
 
     public void Purchase()
     {
-        ObjectPools.Instance.ReleaseObjectToPool(gameObject);
+        if (GameManager.Instance.gene < price)
+        {
+            //살수없음
+        }
+        else
+        {
+            //구매
+            GameManager.Instance.gene -= price;
+            GameManager.Instance.AddContagious(contagious);
+            GameManager.Instance.AddCureDevelopProbability(cureDevelopProbability);
+
+            card.GetComponent<Image>().color = Color.black;
+            
+            ObjectPools.Instance.ReleaseObjectToPool(gameObject);
+        }
     }
 }

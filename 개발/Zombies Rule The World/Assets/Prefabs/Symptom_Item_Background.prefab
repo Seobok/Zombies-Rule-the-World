@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3453345629510957476}
   - component: {fileID: 2704154958473981256}
   m_Layer: 5
-  m_Name: Item_Background
+  m_Name: Symptom_Item_Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62c7114f31ff24d488f1220c6dc2c5ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 3453345630013572271}
+  text: {fileID: 7037305732556587716}
+  contagious: 0
+  cureDevelopProbability: 0
+  price: 0
 --- !u!1 &3453345630013572265
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,8 @@
 ﻿StringUI,String
 Game_Title,Zombies Rule the World
-Game_Start,새 게임
-Game_Resume,이어 하기
-Setting,설정
+Game_Start,New Game
+Game_Resume,Resume
+Setting,Setting
 Cure_Percentage,{0}%
 Zombie_Percentage_World,{0}%
 Gene_Num,{0}
@@ -25,6 +25,6 @@ Transition_Title,변이 제목
 Transition_Text,변이 설명
 Item_Title,항목 제목
 Item_Text,항목 설명
-Confirm_Text,{0}+유전자를 사용하여 위 항목을 구매하시겠습니까?
+Confirm_Text,{0}유전자를 사용하여 위 항목을 구매하시겠습니까?
 Cancel_Button,취소
 Purchase_Button,구매

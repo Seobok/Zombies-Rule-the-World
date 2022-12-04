@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            _changeDaysCallBack?.Invoke();
             _days = value;
+            _changeDaysCallBack?.Invoke();
         }
     }
     
@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            _changeGeneCallBack?.Invoke();
             _gene = value;
+            _changeGeneCallBack?.Invoke();
         }
     }
     
@@ -68,16 +68,76 @@ public class GameManager : MonoBehaviour
         }
         set
         {
-            _changeTotalInfectionAction?.Invoke();
             _totalInfectionCount = value;
+            _changeTotalInfectionAction?.Invoke();
         }
     }
 
-    [HideInInspector] public float cureDevelopProbability = 0.1f;
-    [HideInInspector] public float contagious = 0.1f;
-    [HideInInspector] public float cureDevelopRate = 0f;
-    [HideInInspector] public bool isCountryLoaded = false;
+    private List<float> _addCureDevelopProbability = new List<float>();
+    public void AddCureDevelopProbability(float item)
+    {
+        _addCureDevelopProbability.Add(item);
+    }
     
+    private float _cureDevelopProbability = 0.1f;
+
+    public float cureDevelopProbability
+    {
+        get
+        {
+            var tmp = _cureDevelopProbability;
+            foreach (var item in _addCureDevelopProbability)
+            {
+                tmp += item;
+            }
+            return tmp;
+        }
+        set
+        {
+            _cureDevelopProbability = value;
+        }
+    }
+    
+    private List<float> _addContagious = new List<float>();
+    public void AddContagious(float item)
+    {
+        _addContagious.Add(item);
+    }
+    private float _contagious = 0.1f;
+
+    public float contagious
+    {
+        get
+        {
+            var tmp = _contagious;
+            foreach (var item in _addContagious)
+            {
+                tmp += item;
+            }
+            return tmp;
+        }
+        set
+        {
+            _contagious = value;
+        }
+    }
+    
+    private float _cureDevelopRate = 0f;
+
+    public float cureDevelopRate
+    {
+        get
+        {
+            return _cureDevelopRate;
+        }
+        set
+        {
+            _cureDevelopRate = value;
+            _changeCureDevelopRateCallBack?.Invoke();
+        }
+    }
+    [HideInInspector] public bool isCountryLoaded = false;
+
     private Action _changeDaysCallBack;
 
     public void AddChangeDaysCallBack(Action changeDaysAction)
@@ -97,6 +157,13 @@ public class GameManager : MonoBehaviour
     public void AddChangeGeneCallBack(Action changeGeneCallBack)
     {
         _changeGeneCallBack += changeGeneCallBack;
+    }
+
+    private Action _changeCureDevelopRateCallBack;
+
+    public void AddChangeCureDevelopRateCallBack(Action changeCureDevelopRateCallBack)
+    {
+        _changeCureDevelopRateCallBack += changeCureDevelopRateCallBack;
     }
     
     public Dictionary<string, List<float>> Country;   //("대륙이름", ("대륙인구", "감염자 수"))
@@ -163,11 +230,15 @@ public class GameManager : MonoBehaviour
             if (cureDevelopProbability >= Random.Range(0f, 1f))
             {
                 cureDevelopRate += 0.01f;
+                if (cureDevelopRate > 1f)
+                    cureDevelopRate = 1f;
             }
 
             if (days % 2 == 0 && cureDevelopRate >= Random.Range(0f, 1f))
             {
                 contagious -= 0.01f;
+                if (contagious < 0f)
+                    contagious = 0f;
             }
         }
 

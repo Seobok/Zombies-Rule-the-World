@@ -41,6 +41,9 @@ public class ManageDefault : MonoBehaviour
         ChangeZombieGraph();
         GameManager.Instance.AddChangeTotalInfectionCallBack(ChangeZombieGraph);
         
+        ChangeCureGraph();
+        GameManager.Instance.AddChangeCureDevelopRateCallBack(ChangeCureGraph);
+        
         ChangeGeneText();
         GameManager.Instance.AddChangeGeneCallBack(ChangeGeneText);
     }
@@ -62,11 +65,11 @@ public class ManageDefault : MonoBehaviour
 
     private void ChangeCureGraph()
     {
-        /*var curePercentage
+        var curePercentageValue = GameManager.Instance.cureDevelopRate;
 
         _curePercentageText.text =
-            String.Format(list[idList["Cure_Percentage"]]["String"].ToString(), ???);
-        _cureGraphBarImage.fillAmount = ???;*/
+            String.Format(_list[_idList["Cure_Percentage"]]["String"].ToString(), curePercentageValue);
+        _cureGraphBarImage.fillAmount = curePercentageValue;
     }
 
     private void ChangeGeneText()
@@ -88,7 +91,13 @@ public class ManageDefault : MonoBehaviour
         }
         else
         {
-            transform.Find("CountrySelected(Clone)").GetComponent<ManageCountrySelected>().SetCountry(country);
+            var obj = transform.Find("CountrySelected(Clone)");
+            obj.GetComponent<ManageCountrySelected>().SetCountry(country);
+
+            if (obj.Find("CountryInfo(Clone)"))
+            {
+                obj.Find("CountryInfo(Clone)").GetComponent<ManageCountryInfo>().CloseCountryInfo();
+            }
         }
     }
 }

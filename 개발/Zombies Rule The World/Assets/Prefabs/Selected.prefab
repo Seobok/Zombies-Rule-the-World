@@ -1314,3 +1314,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577723735891b774ab62a0e480a25071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemTitle: {fileID: 7888209864831798842}
+  itemText: {fileID: 7888209865336537016}
+  confirmText: {fileID: 7888209866375125235}
