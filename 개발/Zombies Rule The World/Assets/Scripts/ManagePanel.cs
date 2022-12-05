@@ -6,6 +6,7 @@ using UnityEngine;
 public class ManagePanel : MonoBehaviour
 {
     public GameObject zombieGen;
+    public GameObject setting;
 
     private void Awake()
     {
@@ -20,6 +21,18 @@ public class ManagePanel : MonoBehaviour
     public void CloseZombieGen()
     {
         zombieGen.SetActive(false);
+    }
+
+    public void ShowSetting()
+    {
+        setting.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void CloseSetting()
+    {
+        setting.SetActive(false);
+        Time.timeScale = GameManager.Instance.gameSpeed;
     }
 
     public void ShowNewsPopUp()

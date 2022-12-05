@@ -49,6 +49,8 @@ public class ManageNewsPopUp : MonoBehaviour
 
         GameManager.Instance.contagious += float.Parse(newsItem["전염성"].ToString());
         GameManager.Instance.cureDevelopProbability += float.Parse(newsItem["치료제 개발 수치"].ToString());
+        
+        GetComponent<AudioSource>().Play();
     }
 
     public void ClosePopUp()

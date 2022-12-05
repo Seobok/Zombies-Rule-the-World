@@ -10,9 +10,6 @@ public class ManageCountrySelected : MonoBehaviour
     [SerializeField] private GameObject countryName;
     [SerializeField] private GameObject zombieGraph;
     [SerializeField] private GameObject countryState;
-    [SerializeField] private GameObject quarantineXIcon;
-    [SerializeField] private GameObject airportXIcon;
-    [SerializeField] private GameObject harborXIcon;
     
     public void ShowCountryInfo()
     {
@@ -32,7 +29,5 @@ public class ManageCountrySelected : MonoBehaviour
         countryName.GetComponent<TextMeshProUGUI>().text = _country;
         zombieGraph.GetComponent<Image>().fillAmount =
             GameManager.Instance.Country[_country][GameManager.InfectionCount] / GameManager.Instance.Country[_country][GameManager.PeopleCount];
-        //countryState = 
-
     }
 }

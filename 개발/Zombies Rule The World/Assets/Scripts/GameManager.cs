@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
         }
     }
     [HideInInspector] public bool isCountryLoaded = false;
+    [HideInInspector] public float gameSpeed = 1f;
 
     private Action _changeDaysCallBack;
 
