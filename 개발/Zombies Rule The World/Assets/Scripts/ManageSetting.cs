@@ -13,6 +13,8 @@ public class ManageSetting : MonoBehaviour
     public GameObject effectBtn;
     public GameObject bgmBtn;
 
+    public GameObject bgm;
+
     private bool isFast = false;
     private bool isEffect = true;
     private bool isBgm = true;
@@ -41,12 +43,14 @@ public class ManageSetting : MonoBehaviour
         {
             effectBtn.GetComponent<Image>().sprite = off;
 
+            GameManager.Instance.isEffect = false;
             isEffect = false;
         }
         else
         {
             effectBtn.GetComponent<Image>().sprite = on;
 
+            GameManager.Instance.isEffect = true;
             isEffect = true;
         }
     }
@@ -57,12 +61,14 @@ public class ManageSetting : MonoBehaviour
         {
             bgmBtn.GetComponent<Image>().sprite = off;
 
+            bgm.GetComponent<AudioSource>().Pause();
             isBgm = false;
         }
         else
         {
             bgmBtn.GetComponent<Image>().sprite = on;
 
+            bgm.GetComponent<AudioSource>().Play();
             isBgm = true;
         }
     }

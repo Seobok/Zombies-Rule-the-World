@@ -848,6 +848,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8255117538799252138}
+        m_TargetAssemblyTypeName: ManageButtonAudio, Assembly-CSharp
+        m_MethodName: PlayButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7966915092894811604}
         m_TargetAssemblyTypeName: ManageSelected, Assembly-CSharp
         m_MethodName: Purchase
@@ -982,6 +994,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8255117538799252138}
+        m_TargetAssemblyTypeName: ManageButtonAudio, Assembly-CSharp
+        m_MethodName: PlayButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7966915092894811604}
         m_TargetAssemblyTypeName: ManageSelected, Assembly-CSharp
         m_MethodName: Cancel
@@ -1235,6 +1259,7 @@ GameObject:
   - component: {fileID: 7888209866480694770}
   - component: {fileID: 7888209866480694773}
   - component: {fileID: 7966915092894811604}
+  - component: {fileID: 8255117538799252138}
   m_Layer: 5
   m_Name: Selected
   m_TagString: Untagged
@@ -1317,3 +1342,19 @@ MonoBehaviour:
   itemTitle: {fileID: 7888209864831798842}
   itemText: {fileID: 7888209865336537016}
   confirmText: {fileID: 7888209866375125235}
+  contagious: 0
+  cureDevelopProbability: 0
+  price: 0
+  card: {fileID: 0}
+--- !u!114 &8255117538799252138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7888209866480694775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7d7dd71b80fc454f91e42c95492a0a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -28,3 +28,6 @@ Item_Text,항목 설명
 Confirm_Text,{0}유전자를 사용하여 위 항목을 구매하시겠습니까?
 Cancel_Button,취소
 Purchase_Button,구매
+Country_Select_Button,이 대륙을 선택하여 게임 시작
+Tutorial_Text,게임을 시작하려면 대륙을 선택해야합니다
+Tutorial_Ok,확인

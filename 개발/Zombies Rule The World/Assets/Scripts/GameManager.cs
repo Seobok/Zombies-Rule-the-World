@@ -138,6 +138,8 @@ public class GameManager : MonoBehaviour
     }
     [HideInInspector] public bool isCountryLoaded = false;
     [HideInInspector] public float gameSpeed = 1f;
+    public bool isEffect = true;
+    [HideInInspector] public bool isSelectCountry = false;
 
     private Action _changeDaysCallBack;
 

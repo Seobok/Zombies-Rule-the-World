@@ -68,7 +68,7 @@ public class ManageDefault : MonoBehaviour
         var curePercentageValue = GameManager.Instance.cureDevelopRate;
 
         _curePercentageText.text =
-            String.Format(_list[_idList["Cure_Percentage"]]["String"].ToString(), curePercentageValue);
+            String.Format(_list[_idList["Cure_Percentage"]]["String"].ToString(), curePercentageValue * 100);
         _cureGraphBarImage.fillAmount = curePercentageValue;
     }
 
@@ -83,6 +83,11 @@ public class ManageDefault : MonoBehaviour
         if (!transform.Find("CountrySelected(Clone)"))
         {
             GameObject obj = ObjectPools.Instance.GetPooledObject("CountrySelected");
+
+            if (GameManager.Instance.isSelectCountry)
+            {
+                obj.GetComponent<ManageCountrySelected>().selectCountryBtn.SetActive(false);
+            }
 
             obj.GetComponent<ManageCountrySelected>().SetCountry(country);
             
