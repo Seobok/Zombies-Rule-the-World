@@ -181,7 +181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC124\uC815"
+  m_text: Setting
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
   m_sharedMaterial: {fileID: 3571581869877463972, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
@@ -451,11 +451,11 @@ RectTransform:
   m_Children:
   - {fileID: 254734604}
   m_Father: {fileID: 1578755778}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650, y: -426}
+  m_AnchoredPosition: {x: 650, y: -288}
   m_SizeDelta: {x: 358, y: 140}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &608670643
@@ -706,7 +706,7 @@ GameObject:
   - component: {fileID: 956523701}
   - component: {fileID: 956523700}
   m_Layer: 5
-  m_Name: Game_Resume
+  m_Name: Game_Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -726,11 +726,11 @@ RectTransform:
   m_Children:
   - {fileID: 1196703495}
   m_Father: {fileID: 1578755778}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 650, y: -288}
+  m_AnchoredPosition: {x: 650, y: -426}
   m_SizeDelta: {x: 358, y: 140}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &956523700
@@ -780,6 +780,18 @@ MonoBehaviour:
       - m_Target: {fileID: 756834977}
         m_TargetAssemblyTypeName: ManageButtonAudio, Assembly-CSharp
         m_MethodName: PlayButtonAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1578755779}
+        m_TargetAssemblyTypeName: MoveScene, Assembly-CSharp
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1024,7 +1036,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC0C8 \uAC8C\uC784\r"
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
   m_sharedMaterial: {fileID: 3571581869877463972, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
@@ -1113,7 +1125,7 @@ GameObject:
   - component: {fileID: 1196703497}
   - component: {fileID: 1196703496}
   m_Layer: 5
-  m_Name: Game_Resume
+  m_Name: Game_Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uC5B4 \uD558\uAE30"
+  m_text: Quit
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
   m_sharedMaterial: {fileID: 3571581869877463972, guid: 8e9450acf8cc830448d73ff4af433e7c, type: 2}
@@ -1478,8 +1490,8 @@ RectTransform:
   m_Children:
   - {fileID: 469786236}
   - {fileID: 1503638962}
-  - {fileID: 956523699}
   - {fileID: 608670642}
+  - {fileID: 956523699}
   - {fileID: 1081898951}
   m_Father: {fileID: 0}
   m_RootOrder: 1
