@@ -25,6 +25,6 @@ public class ManageGen : MonoBehaviour
     public void ChangeGene()
     {
         _geneNumText.text = GameManager.Instance.gene.ToString();
-        _geneGraphImage.fillAmount = (float)GameManager.Instance.gene / 100; //TODO ??
+        _geneGraphImage.fillAmount = (float)GameManager.Instance.gene / 100;
     }
 }

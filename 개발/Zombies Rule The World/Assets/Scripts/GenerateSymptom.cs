@@ -5,17 +5,27 @@ using UnityEngine;
 public class GenerateSymptom : MonoBehaviour
 {
     private bool isLoaded = false;
+    private int idx = 0;
     public void GenerateItem()
     {
         if (!isLoaded)
         {
             var symptomList = CSVReader.Read("CSVs/Symptom");
 
+            ObjectPools.Instance.GetPooledObject("Horizontal Content").transform.parent = transform;
+
             foreach (var symptom in symptomList)
             {
                 var obj = ObjectPools.Instance.GetPooledObject("Symptom_Item_Background");
 
-                obj.transform.parent = transform;
+                if (transform.GetChild(idx).childCount == 3)
+                {
+                    ObjectPools.Instance.GetPooledObject("Horizontal Content").transform.parent = transform;
+
+                    idx++;
+                }
+
+                obj.transform.parent = transform.GetChild(idx);
 
                 var item = obj.GetComponent<SelectGenItem>();
             

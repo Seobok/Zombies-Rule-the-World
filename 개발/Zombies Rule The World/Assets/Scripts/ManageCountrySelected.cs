@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,10 +9,29 @@ public class ManageCountrySelected : MonoBehaviour
 {
     private string _country = "";
     [SerializeField] private GameObject countryName;
+    private TextMeshProUGUI countryNameText;
     [SerializeField] private GameObject zombieGraph;
+    private Image zombieGraphImage;
 
     public GameObject selectCountryBtn;
-    
+
+    private void Awake()
+    {
+        countryNameText = countryName.GetComponent<TextMeshProUGUI>();
+        zombieGraphImage = zombieGraph.GetComponent<Image>();
+    }
+
+    private void Update()
+    {
+        if (gameObject.activeSelf)
+        {
+            countryNameText.text = _country;
+            zombieGraphImage.fillAmount =
+                GameManager.Instance.Country[_country][GameManager.InfectionCount] /
+                GameManager.Instance.Country[_country][GameManager.PeopleCount];
+        }
+    }
+
     public void ShowCountryInfo()
     {
         if (!transform.Find("CountryInfo(Clone)"))
@@ -27,9 +47,10 @@ public class ManageCountrySelected : MonoBehaviour
     {
         _country = country;
         
-        countryName.GetComponent<TextMeshProUGUI>().text = _country;
-        zombieGraph.GetComponent<Image>().fillAmount =
-            GameManager.Instance.Country[_country][GameManager.InfectionCount] / GameManager.Instance.Country[_country][GameManager.PeopleCount];
+        countryNameText.text = _country;
+        zombieGraphImage.fillAmount =
+            GameManager.Instance.Country[_country][GameManager.InfectionCount] /
+            GameManager.Instance.Country[_country][GameManager.PeopleCount];
     }
 
     public void SelectCountry()
