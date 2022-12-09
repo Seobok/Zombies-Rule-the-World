@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public const int InfectionCount = 1;
     public const int GenePoint = 2;
 
-    public float 감염률 = 0.1f;
+    public float 감염률 = 0.05f;
     public int 인구비 = 1000;
 
     private int _days = 0;
@@ -231,7 +231,7 @@ public class GameManager : MonoBehaviour
                 {
                     if (topInfectionRate >= 감염률)    //가장 감염자 수가 많은 대륙의 감염률이 10%이상
                     {
-                        if (Random.Range(0f, 1f) <= 0.1f)                       //10%
+                        if (Random.Range(0f, 1f) <= 0.2f)                       //10%
                         {
                             Debug.Log("대륙간전염! +1");
                             value.Value[InfectionCount]++;                      //감염자 발생
@@ -249,8 +249,8 @@ public class GameManager : MonoBehaviour
                     if (contagious >= Random.Range(0f, 1f))        //전염성 %
                     {
                         Debug.Log("전염! +1000");
-                        value.Value[InfectionCount] += 1000;                       //감염자 발생
-                        var infectionPointRate = Math.Floor(value.Value[InfectionCount] / (value.Value[PeopleCount] / 20));
+                        value.Value[InfectionCount] += 5000;                       //감염자 발생
+                        var infectionPointRate = Math.Floor(value.Value[InfectionCount] / (value.Value[PeopleCount] / 100));
                         if (infectionPointRate > value.Value[GenePoint])
                         {
                             gene += (int)infectionPointRate - (int)value.Value[GenePoint];
