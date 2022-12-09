@@ -35,6 +35,7 @@ public class ManageSelected : MonoBehaviour
             GameManager.Instance.AddCureDevelopProbability(cureDevelopProbability);
 
             card.GetComponent<Image>().color = Color.black;
+            card.GetComponent<Button>().interactable = false;
             
             ObjectPools.Instance.ReleaseObjectToPool(gameObject);
         }

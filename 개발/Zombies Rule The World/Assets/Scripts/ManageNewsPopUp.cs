@@ -43,9 +43,14 @@ public class ManageNewsPopUp : MonoBehaviour
                 }
             }
         }
+
+        if (newsItem == null)
+            return;
         
         _newsTitleText.text = newsItem["News Title"].ToString();
         _newsTextText.text = newsItem["News Text"].ToString();
+
+        _list.Remove(newsItem);
 
         GameManager.Instance.contagious += float.Parse(newsItem["전염성"].ToString());
         GameManager.Instance.cureDevelopProbability += float.Parse(newsItem["치료제 개발 수치"].ToString());

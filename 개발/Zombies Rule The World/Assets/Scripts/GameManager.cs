@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     
     public const int PeopleCount = 0;
     public const int InfectionCount = 1;
-    public const int GenePoint = 2;
 
     public float 감염률 = 0.05f;
     public int 인구비 = 5000;
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
     public float 대륙간감염확률 = 0.2f;
     public float 치료제개발률 = 0.005f;
     public float 전염성 = 0.005f;
+
+    public int geneCnt = 0;
 
     private int _days = 0;
     public int days
@@ -49,7 +50,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    private int _gene = 0;
+    private int _gene = 10;
     public int gene
     {
         get
@@ -174,20 +175,6 @@ public class GameManager : MonoBehaviour
     {
         _changeCureDevelopRateCallBack += changeCureDevelopRateCallBack;
     }
-
-    public void InitCallBack()
-    {
-        _changeDaysCallBack = null;
-        _changeGeneCallBack = null;
-        _changeCureDevelopRateCallBack = null;
-        _changeTotalInfectionAction = null;
-    }
-
-    public void InitList()
-    {
-        _addCureDevelopProbability = new List<float>();
-        _addContagious = new List<float>();
-    }
     
     public Dictionary<string, List<float>> Country;   //("대륙이름", ("대륙인구", "감염자 수"))
 
@@ -204,7 +191,6 @@ public class GameManager : MonoBehaviour
                 var tmp = new List<float>();
                 tmp.Add(float.Parse(country["대륙인구"].ToString())/인구비);                                                 //PeopleCount
                 tmp.Add(0);                                                                                         //InfectionCount
-                tmp.Add(0);                                                                                         //GenePoint
                 
                 totalPeopleCount += (int)tmp[0];
                 totalInfectionCount += (int)tmp[1];
@@ -254,12 +240,6 @@ public class GameManager : MonoBehaviour
                     {
                         Debug.Log("전염! +1000");
                         value.Value[InfectionCount] += 대륙내감염;                       //감염자 발생
-                        var infectionPointRate = Math.Floor(value.Value[InfectionCount] / (value.Value[PeopleCount] / 100));
-                        if (infectionPointRate > value.Value[GenePoint])
-                        {
-                            gene += (int)infectionPointRate - (int)value.Value[GenePoint];
-                            value.Value[GenePoint] = (int)infectionPointRate;
-                        }
                         if (topInfectionRate < value.Value[InfectionCount] / value.Value[PeopleCount])
                         {
                             topInfectionRate = value.Value[InfectionCount] / value.Value[PeopleCount];
@@ -268,6 +248,14 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
+        }
+
+        int intInfectionRate = (int)Math.Floor(((float)totalInfectionCount / totalPeopleCount) * 100);
+        
+        if (intInfectionRate > geneCnt)
+        {
+            gene += intInfectionRate - geneCnt;
+            geneCnt = intInfectionRate;
         }
         
         if ((float)totalInfectionCount / totalPeopleCount >= 0.1)
@@ -290,6 +278,11 @@ public class GameManager : MonoBehaviour
         if (totalInfectionCount >= totalPeopleCount)
         {
             SceneManager.LoadScene("Scenes/EndWin");
+        }
+
+        if (cureDevelopRate >= 1f)
+        {
+            SceneManager.LoadScene("Scenes/EndLose");
         }
 
         yield return new WaitForSeconds(1f);
