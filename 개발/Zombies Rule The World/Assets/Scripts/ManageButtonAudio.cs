@@ -6,7 +6,7 @@ public class ManageButtonAudio : MonoBehaviour
 {
     public void PlayButtonAudio()
     {
-        if (GameManager.Instance.isEffect)
+        if (GameManager.Instance == null || GameManager.Instance.isEffect)
         {
             transform.parent.GetComponent<AudioSource>().Play();
         }

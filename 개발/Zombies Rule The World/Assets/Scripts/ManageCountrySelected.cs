@@ -34,12 +34,19 @@ public class ManageCountrySelected : MonoBehaviour
 
     public void ShowCountryInfo()
     {
-        if (!transform.Find("CountryInfo(Clone)"))
+        var info = transform.Find("CountryInfo(Clone)");
+        if (!info)
         {
             GameObject obj = ObjectPools.Instance.GetPooledObject("CountryInfo");
-
+            
             obj.transform.parent = transform;
             obj.transform.position= new Vector3(0, 0, 0);
+            
+            obj.GetComponent<ManageCountryInfo>().SetInfo(_country);
+        }
+        else
+        {
+            info.GetComponent<ManageCountryInfo>().SetInfo(_country);
         }
     }
 
