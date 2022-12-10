@@ -28,7 +28,7 @@ public class FadeIn : MonoBehaviour
                 fadeDeltaTime = fadeInSeconds;
                 isFadeIn = false;
             }
-            audioSource.volume = (float)(fadeDeltaTime / fadeInSeconds);
+            audioSource.volume = (float)(fadeDeltaTime / fadeInSeconds)*4/10;
         }
         
     }

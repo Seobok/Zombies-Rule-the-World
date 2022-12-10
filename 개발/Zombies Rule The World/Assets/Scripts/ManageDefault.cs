@@ -59,7 +59,7 @@ public class ManageDefault : MonoBehaviour
         var zombiePercentageValue = (float)GameManager.Instance.totalInfectionCount / GameManager.Instance.totalPeopleCount;
 
         _zombiePercentageText.text =
-            String.Format(_list[_idList["Zombie_Percentage_World"]]["String"].ToString(), (float)(zombiePercentageValue * 1000)/10);
+            String.Format(_list[_idList["Zombie_Percentage_World"]]["String"].ToString(), Math.Floor(zombiePercentageValue * 1000)/10);
         _zombieGraphBarImage.fillAmount = zombiePercentageValue;
     }
 
@@ -68,7 +68,7 @@ public class ManageDefault : MonoBehaviour
         var curePercentageValue = GameManager.Instance.cureDevelopRate;
 
         _curePercentageText.text =
-            String.Format(_list[_idList["Cure_Percentage"]]["String"].ToString(), (float)(curePercentageValue * 1000)/10);
+            String.Format(_list[_idList["Cure_Percentage"]]["String"].ToString(), Math.Floor(curePercentageValue * 1000)/10);
         _cureGraphBarImage.fillAmount = curePercentageValue;
     }
 
