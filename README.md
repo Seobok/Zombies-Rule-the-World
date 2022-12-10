@@ -278,5 +278,28 @@ private IEnumerator IEUpdate()
 ### 데모영상
 https://user-images.githubusercontent.com/100834254/206836615-27c5978c-1f62-4456-97d8-b771d3203e32.mp4
 
+## Reference
+게임 컨셉 : Plague inc.  
+#### 코드 관련
+[CSVReader](https://github.com/tikonen/blog/blob/master/csvreader/CSVReader.cs)  
+[AlphaBtn](https://sensol2.tistory.com/35)  
+[FadeIn](https://m.blog.naver.com/soyokaze75/222033497772)  
+#### 이미지
+[Sci-fi GUI skin](https://assetstore.unity.com/packages/2d/gui/sci-fi-gui-skin-15606)  
+[Simple Button Set 02](https://assetstore.unity.com/packages/2d/gui/icons/simple-button-set-02-184903)  
+[Syringe free icon](https://www.flaticon.com/free-icon/syringe_1778916?related_id=1778916&origin=search)  
+[Zombie free icon](https://www.flaticon.com/free-icon/zombie_3249360?related_id=3249360&origin=search)  
+[Dna free icon](https://www.flaticon.com/free-icon/dna_1694118?term=gene&page=1&position=2&page=1&position=2&related_id=1694118&origin=search)  
+[Cardiology free icon](https://www.flaticon.com/free-icon/cardiology_1863303?term=alive&page=1&position=14&page=1&position=14&related_id=1863303&origin=search)  
+
+#### 사운드
+[Universe Sounds Free Pack](https://assetstore.unity.com/packages/audio/ambient/sci-fi/universe-sounds-free-pack-118865)  
+[SciFi UI Sound FX](https://assetstore.unity.com/packages/audio/sound-fx/scifi-ui-sound-fx-27282)  
+[FREE Casual Game SFX Pack](https://assetstore.unity.com/packages/audio/sound-fx/free-casual-game-sfx-pack-54116)
+#### 폰트
+[Rubik Glitch](https://fonts.google.com/specimen/Rubik+Glitch?preview.text=Zombies%20Rule%20the%20World&preview.text_type=custom)  
+[Dosis](https://fonts.google.com/specimen/Dosis)  
+[한림고딕체](https://www.sandollcloud.com/font/17644.html)
+
 ### 개발환경
 unity(2021.3.13f1 버전)를 통해 제작되었습니다.
