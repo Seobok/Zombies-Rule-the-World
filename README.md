@@ -1,4 +1,4 @@
-# Zombies Rule the World
+﻿# Zombies Rule the World
 ___
 Zombies Rule the World는 모바일 2D 시뮬레이션 게임입니다.
 게임 목표는 전 세계에 좀비바이러스를 퍼트리는 것입니다.
@@ -305,3 +305,4 @@ https://user-images.githubusercontent.com/100834254/206836615-27c5978c-1f62-4456
 
 ### 개발환경
 unity(2021.3.13f1 버전)를 통해 제작되었습니다.
+
